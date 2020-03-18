@@ -1,5 +1,6 @@
 package main;
 
+import core.Renderers.MainRenderer;
 import engine.graphics.Mesh;
 import engine.graphics.Renderer;
 import engine.graphics.Vertex;
@@ -14,6 +15,7 @@ public class Main implements Runnable {
     public Thread game;
     public static Window window;
     public Renderer renderer;
+    public MainRenderer mainRenderer;
     public final int WIDTH = 800, HEIGHT = 800;
 
     public Mesh mesh = new Mesh(new Vertex[]{
@@ -36,6 +38,7 @@ public class Main implements Runnable {
         System.out.println("Init");
         window = new Window(WIDTH, HEIGHT, "Virtual Camera");
         renderer = new Renderer();
+        mainRenderer = new MainRenderer();
         window.setBackgroundColor(0.0f, 0, 0);
         //window.setFullscreen(true);
         window.create();
@@ -53,18 +56,20 @@ public class Main implements Runnable {
 
     private void update() {
         //System.out.println("Update");
+        mainRenderer.mainController.update();
         window.update();
     }
 
     private void render() {
         //System.out.println("Render");
         //renderer.renderMesh(mesh);
-        glBegin(GL_LINES);
-        glVertex3f(0.0f, 0.0f, 0.0f);
-        glVertex3f(0.1f, 0.0f, 0.0f);
-        glVertex3f(0.0f, 0.0f, 0.0f);
-        glVertex3f(0.0f, 0.1f, 0.0f);
-        glEnd();
+//        glBegin(GL_LINES);
+//        glVertex3f(0.0f, 0.0f, 0.0f);
+//        glVertex3f(0.1f, 0.0f, 0.0f);
+//        glVertex3f(0.0f, 0.0f, 0.0f);
+//        glVertex3f(0.0f, 0.1f, 0.0f);
+//        glEnd();
+        mainRenderer.render();
         window.swapBuffers();
     }
 
