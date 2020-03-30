@@ -1,4 +1,4 @@
-package engine.maths;
+package io.github.matikoss.maths;
 
 import java.util.Arrays;
 
@@ -122,6 +122,14 @@ public class Matrix4f {
         return result;
     }
 
+    public static Matrix4f zoom(float value) {
+        Matrix4f result = Matrix4f.identity();
+        result.set(0, 0, value);
+        result.set(1, 1, value);
+        result.set(1, 1, value);
+        return result;
+    }
+
     public static Matrix4f view(Vector3f position, Vector3f rotation) {
         Matrix4f result = Matrix4f.identity();
 
@@ -154,10 +162,10 @@ public class Matrix4f {
         return result;
     }
 
-    public static Vector3f matrixMultiplyVector(Matrix4f matrix4f, Vector3f vector3f) {
-        Vector3f result = new Vector3f(1.0f, 1.0f, 1.0f);
+    public static Vector4f matrixMultiplyVector(Matrix4f matrix4f, Vector4f vector4f) {
+        Vector4f result = new Vector4f(vector4f.getX(), vector4f.getY(), vector4f.getZ(), vector4f.getW());
 
-        Vector4f tmpVec = new Vector4f(vector3f.getX(), vector3f.getY(), vector3f.getZ(), 1.0f);
+        Vector4f tmpVec = new Vector4f(vector4f.getX(), vector4f.getY(), vector4f.getZ(), vector4f.getW());
         Vector4f resultTmp = new Vector4f(1.0f, 1.0f, 1.0f, 1.0f);
 
         resultTmp.setX(matrix4f.get(0, 0) * tmpVec.getX() + matrix4f.get(0, 1) * tmpVec.getY() + matrix4f.get(0, 2) * tmpVec.getZ() + matrix4f.get(0, 3) * tmpVec.getW());
@@ -165,7 +173,7 @@ public class Matrix4f {
         resultTmp.setZ(matrix4f.get(2, 0) * tmpVec.getX() + matrix4f.get(2, 1) * tmpVec.getY() + matrix4f.get(2, 2) * tmpVec.getZ() + matrix4f.get(2, 3) * tmpVec.getW());
         resultTmp.setW(matrix4f.get(3, 0) * tmpVec.getX() + matrix4f.get(3, 1) * tmpVec.getY() + matrix4f.get(3, 2) * tmpVec.getZ() + matrix4f.get(3, 3) * tmpVec.getW());
 
-        result.set(resultTmp.getX(), resultTmp.getY(), resultTmp.getZ());
+        result.set(resultTmp.getX(), resultTmp.getY(), resultTmp.getZ(), resultTmp.getW());
 
         return result;
     }

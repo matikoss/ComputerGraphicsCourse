@@ -15,7 +15,7 @@ public class MainController {
 
     public MainController() {
         cuboidsList = new ArrayList<>();
-        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-0.25f, -0.25f, -1.0f),
+        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-0.25f, -0.25f, -0.5f),
                 new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
     }
 
