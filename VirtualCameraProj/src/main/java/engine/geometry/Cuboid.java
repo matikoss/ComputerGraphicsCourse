@@ -8,18 +8,14 @@ import java.util.List;
 public class Cuboid {
     private float sizeX, sizeY, sizeZ;
     private Vector3f startingPoint;
-    private Vector3f rotation;
-    private Vector3f scale;
     private List<Line3d> cuboidLines;
 
-    public Cuboid(float sizeX, float sizeY, float sizeZ, Vector3f startingPoint, Vector3f rotation, Vector3f scale) {
+    public Cuboid(float sizeX, float sizeY, float sizeZ, Vector3f startingPoint) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.sizeZ = sizeZ;
 
         this.startingPoint = startingPoint;
-        this.rotation = rotation;
-        this.scale = scale;
 
         initLines();
     }
@@ -48,13 +44,5 @@ public class Cuboid {
 
     public List<Line3d> getCuboidLines() {
         return cuboidLines;
-    }
-
-    public Vector3f getRotation() {
-        return rotation;
-    }
-
-    public Vector3f getScale() {
-        return scale;
     }
 }

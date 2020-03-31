@@ -15,8 +15,10 @@ public class MainController {
 
     public MainController() {
         cuboidsList = new ArrayList<>();
-        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-0.25f, -0.25f, -0.5f),
-                new Vector3f(0, 0, 0), new Vector3f(1, 1, 1)));
+        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-0.25f, -0.25f, -20.0f)));
+        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-1.00f, -0.25f, -20.0f)));
+        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-0.25f, -0.25f, -21.0f)));
+        cuboidsList.add(new Cuboid(0.5f, 0.5f, 0.5f, new Vector3f(-1.00f, -0.25f, -21.0f)));
     }
 
     public void update() {
@@ -77,6 +79,54 @@ public class MainController {
                 for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
                     Transformations.rotateLeft(lineToTranslate.getStartingPoint());
                     Transformations.rotateLeft(lineToTranslate.getEndingPoint());
+                }
+            }
+        }
+        if (Input.isKeyDown(GLFW.GLFW_KEY_R)) {
+            for (Cuboid cuboidToTranslate : cuboidsList) {
+                for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
+                    Transformations.rotateBottom(lineToTranslate.getStartingPoint());
+                    Transformations.rotateBottom(lineToTranslate.getEndingPoint());
+                }
+            }
+        }
+        if (Input.isKeyDown(GLFW.GLFW_KEY_F)) {
+            for (Cuboid cuboidToTranslate : cuboidsList) {
+                for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
+                    Transformations.rotateTop(lineToTranslate.getStartingPoint());
+                    Transformations.rotateTop(lineToTranslate.getEndingPoint());
+                }
+            }
+        }
+        if (Input.isKeyDown(GLFW.GLFW_KEY_Z)) {
+            for (Cuboid cuboidToTranslate : cuboidsList) {
+                for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
+                    Transformations.rotateWheelRight(lineToTranslate.getStartingPoint());
+                    Transformations.rotateWheelRight(lineToTranslate.getEndingPoint());
+                }
+            }
+        }
+        if (Input.isKeyDown(GLFW.GLFW_KEY_X)) {
+            for (Cuboid cuboidToTranslate : cuboidsList) {
+                for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
+                    Transformations.rotateWheelLeft(lineToTranslate.getStartingPoint());
+                    Transformations.rotateWheelLeft(lineToTranslate.getEndingPoint());
+                }
+            }
+        }
+        if (Input.isKeyDown(GLFW.GLFW_KEY_T)) {
+            for (Cuboid cuboidToTranslate : cuboidsList) {
+                for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
+                    Transformations.zoomIn(lineToTranslate.getStartingPoint());
+                    Transformations.zoomIn(lineToTranslate.getEndingPoint());
+                }
+            }
+        }
+        if (Input.isKeyDown(GLFW.GLFW_KEY_G)) {
+            for (Cuboid cuboidToTranslate : cuboidsList) {
+                for (Line3d lineToTranslate : cuboidToTranslate.getCuboidLines()) {
+                    Transformations.zoomOut(lineToTranslate.getStartingPoint());
+                    Transformations.zoomOut(lineToTranslate.getEndingPoint());
                 }
             }
         }

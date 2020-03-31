@@ -48,7 +48,7 @@ public class Window {
         GLFW.glfwSetWindowPos(window, windowPosX[0], windowPosY[0]);
         GLFW.glfwMakeContextCurrent(window);
         GL.createCapabilities();
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
+//        GL11.glEnable(GL11.GL_DEPTH_TEST);
 
         createCallbacks();
 
