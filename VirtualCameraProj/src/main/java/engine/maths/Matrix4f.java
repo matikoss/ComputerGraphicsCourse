@@ -126,7 +126,6 @@ public class Matrix4f {
         Matrix4f result = Matrix4f.identity();
         result.set(0, 0, value);
         result.set(1, 1, value);
-        result.set(1, 1, value);
         return result;
     }
 

@@ -9,13 +9,18 @@ public class Cuboid {
     private float sizeX, sizeY, sizeZ;
     private Vector3f startingPoint;
     private List<Line3d> cuboidLines;
+    private int r, g, b;
 
-    public Cuboid(float sizeX, float sizeY, float sizeZ, Vector3f startingPoint) {
+    public Cuboid(float sizeX, float sizeY, float sizeZ, Vector3f startingPoint, int r, int g, int b) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.sizeZ = sizeZ;
 
         this.startingPoint = startingPoint;
+
+        this.r = r;
+        this.g = g;
+        this.b = b;
 
         initLines();
     }
@@ -44,5 +49,17 @@ public class Cuboid {
 
     public List<Line3d> getCuboidLines() {
         return cuboidLines;
+    }
+
+    public int getR() {
+        return r;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public int getB() {
+        return b;
     }
 }

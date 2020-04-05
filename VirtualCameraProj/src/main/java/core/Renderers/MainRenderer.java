@@ -19,8 +19,11 @@ public class MainRenderer {
         mainController = new MainController();
         this.width = width;
         this.height = height;
-        projection = Matrix4f.projection(90.0f, 16.0f / 9.0f, 0.01f, 1000.0f);
-        viewport = Matrix4f.viewport(1.0f, 1.0f);
+//        projection = Matrix4f.projection(70.0f, 16.0f / 9.0f, 0.01f, 1000.0f);
+//        viewport = Matrix4f.viewport(1.0f, 1.0f);
+//        finalMatrix = Matrix4f.multiply(projection, viewport);
+        projection = Matrix4f.perspectiveMatrix(-1.0f, 1.0f, 1.0f, -1.0f, 0.5f, 100.0f);
+        viewport = Matrix4f.viewport(2.0f, 2.0f);
         finalMatrix = Matrix4f.multiply(projection, viewport);
     }
 
@@ -43,7 +46,7 @@ public class MainRenderer {
 //            Vector3f tmpStartPointView = Matrix4f.matrixMultiplyVector(viewport, tmpStartPointProjection);
 //            Vector3f tmpEndPointView = Matrix4f.matrixMultiplyVector(viewport, tmpEndPointProjection);
 
-            drawLine4f(tmpStartPointProjection, tmpEndPointProjection);
+            drawLine4f(tmpStartPointProjection, tmpEndPointProjection, cuboid.getR(), cuboid.getG(), cuboid.getB());
 //            drawLine(Matrix4f.matrixMultiplyVector(projection, lineToDraw.getStartingPoint()), Matrix4f.matrixMultiplyVector(projection, lineToDraw.getEndingPoint()));
 //            drawLine(lineToDraw.getStartingPoint(), lineToDraw.getEndingPoint());
 //            drawLine(tmpStartPointView, tmpEndPointView);
@@ -57,8 +60,9 @@ public class MainRenderer {
         GL11.glEnd();
     }
 
-    private void drawLine4f(Vector4f start, Vector4f end) {
+    private void drawLine4f(Vector4f start, Vector4f end, int r, int g, int b) {
         GL11.glBegin(GL11.GL_LINES);
+        GL11.glColor3f(r, g, b);
         GL11.glVertex2f(start.getX() / start.getW(), start.getY() / start.getW());
         GL11.glVertex2f(end.getX() / end.getW(), end.getY() / end.getW());
         GL11.glEnd();

@@ -22,6 +22,14 @@ public class Transformations {
         vector.setY(vector.getY() - 0.01f);
     }
 
+    public static void GoForward(Vector3f vector) {
+        vector.setZ(vector.getZ() + 0.01f);
+    }
+
+    public static void GoBackward(Vector3f vector) {
+        vector.setZ(vector.getZ() - 0.01f);
+    }
+
     public static void rotateRight(Vector3f vector) {
         Rotator.rotateAxisY(0.01f, vector);
     }
