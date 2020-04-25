@@ -12,8 +12,6 @@ import io.github.matikoss.controllers.CamerController;
 import io.github.matikoss.controllers.MainController;
 import io.github.matikoss.objects.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class MainRenderer {
@@ -43,9 +41,7 @@ public class MainRenderer {
     }
 
     public void render() {
-//        renderPolygons();
         renderRectangles();
-//        renderCuboids();
     }
 
     public void update() {
